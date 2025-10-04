@@ -1,0 +1,19 @@
+project_name:
+  type: str
+  help: "Name of your project (used as folder / display name)"
+  default: "{{ project_slug | replace('_', '-') }}"
+
+project_slug:
+  type: str
+  help: "Python package / module slug (lowercase, underscore allowed)"
+  default: "{{ project_name | lower | replace('-', '_') }}"
+
+include_ci:
+  type: bool
+  help: "Include CI workflow files?"
+  default: true
+
+_exclude:
+  - .git
+  - __pycache__
+  - .DS_Store
