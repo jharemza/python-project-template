@@ -1,12 +1,12 @@
-project_name:
-  type: str
-  help: "Name of your project (used for display and README title)"
-  default: "{{ project_slug | replace('_', '-') }}"
-
 project_slug:
   type: str
   help: "Python package / module slug (lowercase, underscores allowed)"
-  default: "my_project"
+  default: "{{ _copier_conf.dst_path | basename | lower | replace('-', '_') }}"
+
+project_name:
+  type: str
+  help: "Display name of the project"
+  default: "{{ project_slug | replace('_', ' ') | title }}"
 
 include_ci:
   type: bool
